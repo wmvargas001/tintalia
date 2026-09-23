@@ -6,7 +6,7 @@ import { formatCOP } from "@/lib/format";
 const trustPoints = [
   {
     title: "Envíos a toda Colombia",
-    description: "Despacho en 24-48 horas desde Bogotá.",
+    description: "Despacho en 24-48 horas desde Pereira.",
     icon: "📦",
   },
   {
@@ -16,7 +16,7 @@ const trustPoints = [
   },
   {
     title: "Garantía y retracto",
-    description: "5 días hábiles para devoluciones, según la ley colombiana.",
+    description: "5 días hábiles para devoluciones.",
     icon: "✅",
   },
 ];
@@ -186,7 +186,7 @@ export default function Home() {
             </p>
             <ul className="mt-2 space-y-1 text-sm text-zinc-500 dark:text-zinc-400">
               <li>hola@tintalia.co</li>
-              <li>Bogotá, Colombia</li>
+              <li>Pereira, Colombia</li>
             </ul>
           </div>
         </div>
