@@ -12,6 +12,7 @@ const books: Book[] = [
       "La historia de la familia Buendía a lo largo de siete generaciones en el pueblo ficticio de Macondo.",
     category: "Ficción",
     stock: 12,
+    featured: true,
   },
   {
     slug: "el-otono-del-patriarca",
@@ -45,4 +46,12 @@ export function getAllBooks(): Book[] {
 
 export function getBookBySlug(slug: string): Book | undefined {
   return books.find((book) => book.slug === slug);
+}
+
+export function getFeaturedBook(): Book {
+  return books.find((book) => book.featured) ?? books[0];
+}
+
+export function getCategories(): string[] {
+  return Array.from(new Set(books.map((book) => book.category)));
 }
