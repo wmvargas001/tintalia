@@ -18,54 +18,74 @@ export default async function BookPage({
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
-      <header className="border-b border-zinc-200 px-6 py-4 dark:border-zinc-800">
+      <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
         <Link
           href="/"
-          className="text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+          className="text-xl font-serif font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
         >
           Tintalia
         </Link>
       </header>
 
-      <main className="mx-auto grid max-w-4xl grid-cols-1 gap-8 px-6 py-10 sm:grid-cols-[240px_1fr]">
-        <div className="overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
-          <Image
-            src={book.coverUrl}
-            alt={`Portada de ${book.title}`}
-            width={240}
-            height={360}
-            className="w-full"
-          />
-        </div>
+      <main className="mx-auto max-w-4xl px-6 py-12">
+        <Link
+          href="/"
+          className="mb-6 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+        >
+          ← Volver al catálogo
+        </Link>
 
-        <div className="flex flex-col gap-4">
-          <div>
-            <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-              {book.title}
-            </h1>
-            <p className="text-zinc-500 dark:text-zinc-400">{book.author}</p>
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-[280px_1fr]">
+          <div className="overflow-hidden rounded-lg border border-zinc-200 shadow-md dark:border-zinc-800">
+            <Image
+              src={book.coverUrl}
+              alt={`Portada de ${book.title}`}
+              width={280}
+              height={420}
+              className="w-full"
+              priority
+            />
           </div>
 
-          <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-            {formatCOP(book.price)}
-          </p>
+          <div className="flex flex-col gap-5">
+            <div>
+              <span className="mb-2 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+                {book.category}
+              </span>
+              <h1 className="font-serif text-3xl font-semibold leading-tight text-zinc-900 dark:text-zinc-50">
+                {book.title}
+              </h1>
+              <p className="mt-1 text-zinc-500 dark:text-zinc-400">
+                {book.author}
+              </p>
+            </div>
 
-          <p className="text-zinc-700 dark:text-zinc-300">
-            {book.description}
-          </p>
-
-          {book.stock > 0 ? (
-            <button
-              type="button"
-              className="w-fit rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
-            >
-              Agregar al carrito
-            </button>
-          ) : (
-            <p className="w-fit rounded-full bg-zinc-200 px-6 py-3 text-sm font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-              Agotado
+            <p className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+              {formatCOP(book.price)}
             </p>
-          )}
+
+            <p className="leading-relaxed text-zinc-700 dark:text-zinc-300">
+              {book.description}
+            </p>
+
+            {book.stock > 0 ? (
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  className="w-fit rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                >
+                  Agregar al carrito
+                </button>
+                <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                  {book.stock} disponibles
+                </span>
+              </div>
+            ) : (
+              <p className="w-fit rounded-full bg-zinc-200 px-6 py-3 text-sm font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                Agotado
+              </p>
+            )}
+          </div>
         </div>
       </main>
     </div>

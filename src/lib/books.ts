@@ -7,7 +7,7 @@ const books: Book[] = [
     author: "Gabriel García Márquez",
     price: 65000,
     currency: "COP",
-    coverUrl: "/covers/placeholder.svg",
+    coverUrl: "/covers/cien-anos-de-soledad.svg",
     description:
       "La historia de la familia Buendía a lo largo de siete generaciones en el pueblo ficticio de Macondo.",
     category: "Ficción",
@@ -19,7 +19,7 @@ const books: Book[] = [
     author: "Gabriel García Márquez",
     price: 58000,
     currency: "COP",
-    coverUrl: "/covers/placeholder.svg",
+    coverUrl: "/covers/el-otono-del-patriarca.svg",
     description:
       "Un retrato del poder absoluto a través de la figura de un dictador latinoamericano sin nombre.",
     category: "Ficción",
@@ -31,7 +31,7 @@ const books: Book[] = [
     author: "José Eustasio Rivera",
     price: 42000,
     currency: "COP",
-    coverUrl: "/covers/placeholder.svg",
+    coverUrl: "/covers/la-voragine.svg",
     description:
       "Novela colombiana que narra la aventura y tragedia de Arturo Cova en la selva amazónica.",
     category: "Clásicos",
