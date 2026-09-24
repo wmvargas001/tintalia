@@ -215,6 +215,9 @@ export default async function Home({
                     ¡Solo quedan {book.stock}!
                   </p>
                 )}
+                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {book.description}
+                </p>
               </div>
             </Link>
           ))}
