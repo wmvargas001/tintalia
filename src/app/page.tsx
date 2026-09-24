@@ -41,10 +41,20 @@ const testimonials = [
   },
 ];
 
-export default function Home() {
-  const books = getAllBooks();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ categoria?: string }>;
+}) {
+  const { categoria } = await searchParams;
+  const allBooks = getAllBooks();
   const featured = getFeaturedBook();
   const categories = getCategories();
+  const activeCategory =
+    categoria && categories.includes(categoria) ? categoria : undefined;
+  const books = activeCategory
+    ? allBooks.filter((book) => book.category === activeCategory)
+    : allBooks;
 
   return (
     <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
@@ -117,21 +127,42 @@ export default function Home() {
       </section>
 
       <main className="mx-auto max-w-5xl px-6 py-12">
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
             Catálogo
           </h2>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/"
+              className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                !activeCategory
+                  ? "border-rose-900 bg-rose-900 text-white dark:border-rose-700 dark:bg-rose-700"
+                  : "border-zinc-300 text-zinc-600 hover:border-rose-300 dark:border-zinc-700 dark:text-zinc-400"
+              }`}
+            >
+              Todos
+            </Link>
             {categories.map((category) => (
-              <span
+              <Link
                 key={category}
-                className="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
+                href={`/?categoria=${encodeURIComponent(category)}`}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  activeCategory === category
+                    ? "border-rose-900 bg-rose-900 text-white dark:border-rose-700 dark:bg-rose-700"
+                    : "border-zinc-300 text-zinc-600 hover:border-rose-300 dark:border-zinc-700 dark:text-zinc-400"
+                }`}
               >
                 {category}
-              </span>
+              </Link>
             ))}
           </div>
         </div>
+
+        {books.length === 0 && (
+          <p className="py-10 text-center text-sm text-zinc-500 dark:text-zinc-400">
+            No hay libros en esta categoría todavía.
+          </p>
+        )}
 
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
           {books.map((book) => (

@@ -14,7 +14,13 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
         {categories.length > 0 && (
           <nav className="hidden gap-6 text-sm text-zinc-600 sm:flex dark:text-zinc-400">
             {categories.map((category) => (
-              <span key={category}>{category}</span>
+              <Link
+                key={category}
+                href={`/?categoria=${encodeURIComponent(category)}`}
+                className="transition-colors hover:text-rose-800 dark:hover:text-rose-400"
+              >
+                {category}
+              </Link>
             ))}
           </nav>
         )}
