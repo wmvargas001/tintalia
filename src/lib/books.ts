@@ -45,6 +45,20 @@ const books: Book[] = [
     rating: 4.3,
     reviewCount: 52,
   },
+  {
+    slug: "1968",
+    title: "1968",
+    author: "Ramón González Férriz",
+    price: 54000,
+    currency: "COP",
+    coverUrl: "/covers/1968.svg",
+    description:
+      "Un recorrido por las revueltas estudiantiles y contraculturales que sacudieron el mundo en 1968, y una reflexión sobre cómo ese año transformó la política y la cultura occidental hasta hoy.",
+    category: "Ensayo",
+    stock: 8,
+    rating: 4.4,
+    reviewCount: 31,
+  },
 ];
 
 export function getAllBooks(): Book[] {
