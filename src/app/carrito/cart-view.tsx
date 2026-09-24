@@ -116,12 +116,12 @@ export function CartView() {
           <span>Total</span>
           <span>{formatCOP(subtotal)}</span>
         </div>
-        <button
-          type="button"
-          className="mt-6 w-full rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
+        <Link
+          href="/checkout"
+          className="mt-6 block w-full rounded-full bg-rose-900 px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
         >
           Continuar compra
-        </button>
+        </Link>
         <Link
           href="/"
           className="mt-3 block text-center text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
