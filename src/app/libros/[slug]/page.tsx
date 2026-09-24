@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddToCartButton } from "@/components/add-to-cart-button";
+import { BookCover } from "@/components/book-cover";
 import { SiteHeader } from "@/components/site-header";
 import { getBookBySlug } from "@/lib/books";
 import { formatCOP } from "@/lib/format";
@@ -31,13 +31,12 @@ export default async function BookPage({
         </Link>
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-[280px_1fr]">
-          <div className="overflow-hidden rounded-lg border border-zinc-200 shadow-md dark:border-zinc-800">
-            <Image
+          <div className="group">
+            <BookCover
               src={book.coverUrl}
               alt={`Portada de ${book.title}`}
               width={280}
               height={420}
-              className="w-full"
               priority
             />
           </div>

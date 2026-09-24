@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { BookCover } from "@/components/book-cover";
 import { SiteHeader } from "@/components/site-header";
 import { getAllBooks, getCategories, getFeaturedBook } from "@/lib/books";
 import { formatCOP } from "@/lib/format";
@@ -53,14 +53,13 @@ export default function Home() {
           </div>
           <Link
             href={`/libros/${featured.slug}`}
-            className="hidden overflow-hidden rounded-lg border border-zinc-200 shadow-lg transition-transform hover:-translate-y-1 sm:block dark:border-zinc-800"
+            className="group hidden sm:block"
           >
-            <Image
+            <BookCover
               src={featured.coverUrl}
               alt={`Portada de ${featured.title}`}
               width={200}
               height={300}
-              className="w-full"
               priority
             />
           </Link>
@@ -109,19 +108,18 @@ export default function Home() {
               href={`/libros/${book.slug}`}
               className="group flex flex-col gap-2"
             >
-              <div className="relative overflow-hidden rounded-lg border border-zinc-200 shadow-sm transition-all group-hover:-translate-y-1 group-hover:shadow-lg dark:border-zinc-800">
-                <Image
+              <div className="relative">
+                <BookCover
                   src={book.coverUrl}
                   alt={`Portada de ${book.title}`}
                   width={240}
                   height={360}
-                  className="w-full"
                 />
-                <span className="absolute left-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-zinc-700 shadow-sm dark:bg-black/70 dark:text-zinc-200">
+                <span className="pointer-events-none absolute left-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-zinc-700 shadow-sm dark:bg-black/70 dark:text-zinc-200">
                   {book.category}
                 </span>
                 {book.stock === 0 && (
-                  <span className="absolute inset-0 flex items-center justify-center bg-black/40">
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40">
                     <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-zinc-900">
                       Agotado
                     </span>
