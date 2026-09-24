@@ -23,7 +23,14 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
   }, [orderId]);
 
   if (order === undefined) {
-    return null;
+    return (
+      <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 py-20 text-center">
+        <span className="h-14 w-14 animate-pulse rounded-full bg-rose-100 dark:bg-rose-900/40" />
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          Confirmando tu pedido...
+        </p>
+      </div>
+    );
   }
 
   if (order === null) {

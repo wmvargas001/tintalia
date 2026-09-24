@@ -18,7 +18,15 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
             ))}
           </nav>
         )}
-        <CartIcon />
+        <div className="flex items-center gap-4">
+          <Link
+            href="/pedidos"
+            className="hidden text-sm text-zinc-600 hover:text-rose-800 sm:block dark:text-zinc-400 dark:hover:text-rose-400"
+          >
+            Mis pedidos
+          </Link>
+          <CartIcon />
+        </div>
       </div>
     </header>
   );
