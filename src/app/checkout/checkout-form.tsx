@@ -217,6 +217,15 @@ export function CheckoutForm() {
         >
           {submitting ? "Procesando pago..." : "Pagar pedido"}
         </button>
+        <Link
+          href="/carrito"
+          aria-disabled={submitting}
+          className={`mt-3 block w-full rounded-full border border-zinc-300 px-6 py-3 text-center text-sm font-medium text-zinc-700 transition-colors hover:border-rose-300 hover:text-rose-800 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-rose-400 ${
+            submitting ? "pointer-events-none opacity-60" : ""
+          }`}
+        >
+          Cancelar compra
+        </Link>
       </aside>
     </form>
   );
