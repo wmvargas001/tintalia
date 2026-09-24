@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookCover } from "@/components/book-cover";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { SocialLinks } from "@/components/social-links";
 import { StarRating } from "@/components/star-rating";
 import { getAllBooks, getFeaturedBook } from "@/lib/books";
 import { formatCOP } from "@/lib/format";
@@ -179,12 +180,15 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-zinc-200 px-6 py-8 text-center text-xs text-zinc-400 dark:border-zinc-800 dark:text-zinc-600">
-        Recuerda: {featured.title} y más de tu autor favorito te esperan en{" "}
-        <Link href="/" className="underline hover:text-rose-700">
-          el catálogo completo
-        </Link>
-        . © {new Date().getFullYear()} Tintalia.
+      <footer className="border-t border-zinc-200 px-6 py-10 text-center dark:border-zinc-800">
+        <SocialLinks />
+        <p className="mx-auto mt-6 max-w-md text-xs text-zinc-400 dark:text-zinc-600">
+          Recuerda: {featured.title} y más de tu autor favorito te esperan en{" "}
+          <Link href="/" className="underline hover:text-rose-700">
+            el catálogo completo
+          </Link>
+          . © {new Date().getFullYear()} Tintalia.
+        </p>
       </footer>
     </div>
   );
