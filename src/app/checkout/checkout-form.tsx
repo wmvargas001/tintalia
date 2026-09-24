@@ -30,7 +30,7 @@ export function CheckoutForm() {
   if (items.length === 0) {
     return (
       <div className="flex flex-col items-center gap-4 py-20 text-center">
-        <p className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
+        <p className="text-lg font-medium text-stone-900 dark:text-stone-50">
           No tienes libros en el carrito
         </p>
         <Link
@@ -86,56 +86,56 @@ export function CheckoutForm() {
     >
       <div className="flex flex-col gap-8">
         <section>
-          <h2 className="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-4 text-sm font-medium text-stone-900 dark:text-stone-50">
             Datos de envío
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <label className="flex flex-col gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+            <label className="flex flex-col gap-1 text-sm text-stone-700 dark:text-stone-300">
               Nombre completo
               <input
                 name="name"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none focus:border-brand-500 dark:border-stone-700 dark:bg-ink-raised dark:text-stone-50"
               />
             </label>
-            <label className="flex flex-col gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+            <label className="flex flex-col gap-1 text-sm text-stone-700 dark:text-stone-300">
               Correo electrónico
               <input
                 name="email"
                 type="email"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none focus:border-brand-500 dark:border-stone-700 dark:bg-ink-raised dark:text-stone-50"
               />
             </label>
-            <label className="flex flex-col gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+            <label className="flex flex-col gap-1 text-sm text-stone-700 dark:text-stone-300">
               Teléfono
               <input
                 name="phone"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none focus:border-brand-500 dark:border-stone-700 dark:bg-ink-raised dark:text-stone-50"
               />
             </label>
-            <label className="flex flex-col gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+            <label className="flex flex-col gap-1 text-sm text-stone-700 dark:text-stone-300">
               Ciudad
               <input
                 name="city"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none focus:border-brand-500 dark:border-stone-700 dark:bg-ink-raised dark:text-stone-50"
               />
             </label>
-            <label className="flex flex-col gap-1 text-sm text-zinc-700 sm:col-span-2 dark:text-zinc-300">
+            <label className="flex flex-col gap-1 text-sm text-stone-700 sm:col-span-2 dark:text-stone-300">
               Dirección
               <input
                 name="address"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-stone-900 outline-none focus:border-brand-500 dark:border-stone-700 dark:bg-ink-raised dark:text-stone-50"
               />
             </label>
           </div>
         </section>
 
         <section>
-          <h2 className="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-4 text-sm font-medium text-stone-900 dark:text-stone-50">
             Método de pago
           </h2>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -145,7 +145,7 @@ export function CheckoutForm() {
                 className={`cursor-pointer rounded-lg border p-4 text-sm transition-colors ${
                   paymentMethod === method.id
                     ? "border-brand-500 bg-brand-50 dark:border-brand-500 dark:bg-brand-800/20"
-                    : "border-zinc-300 hover:border-brand-300 dark:border-zinc-700"
+                    : "border-stone-300 hover:border-brand-300 dark:border-stone-700"
                 }`}
               >
                 <input
@@ -156,23 +156,23 @@ export function CheckoutForm() {
                   onChange={() => setPaymentMethod(method.id)}
                   className="sr-only"
                 />
-                <p className="font-medium text-zinc-900 dark:text-zinc-50">
+                <p className="font-medium text-stone-900 dark:text-stone-50">
                   {method.label}
                 </p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                <p className="text-xs text-stone-500 dark:text-stone-400">
                   {method.hint}
                 </p>
               </label>
             ))}
           </div>
-          <p className="mt-3 text-xs text-zinc-400 dark:text-zinc-600">
+          <p className="mt-3 text-xs text-stone-400 dark:text-stone-600">
             Pago simulado — no se procesará ningún cobro real.
           </p>
         </section>
       </div>
 
-      <aside className="h-fit rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h2 className="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-50">
+      <aside className="h-fit rounded-lg border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-ink-raised">
+        <h2 className="mb-4 text-sm font-medium text-stone-900 dark:text-stone-50">
           Tu pedido
         </h2>
         <ul className="flex flex-col gap-3">
@@ -183,24 +183,24 @@ export function CheckoutForm() {
                 alt={`Portada de ${item.title}`}
                 width={40}
                 height={60}
-                className="rounded border border-zinc-200 dark:border-zinc-800"
+                className="rounded border border-stone-200 dark:border-stone-800"
               />
               <div className="flex-1 text-sm">
-                <p className="text-zinc-900 dark:text-zinc-50">
+                <p className="text-stone-900 dark:text-stone-50">
                   {item.title}
                 </p>
-                <p className="text-zinc-500 dark:text-zinc-400">
+                <p className="text-stone-500 dark:text-stone-400">
                   x{item.quantity}
                 </p>
               </div>
-              <p className="text-sm text-zinc-900 dark:text-zinc-50">
+              <p className="text-sm text-stone-900 dark:text-stone-50">
                 {formatCOP(item.price * item.quantity)}
               </p>
             </li>
           ))}
         </ul>
 
-        <div className="mt-4 space-y-1 border-t border-zinc-200 pt-4 text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
+        <div className="mt-4 space-y-1 border-t border-stone-200 pt-4 text-sm text-stone-600 dark:border-stone-800 dark:text-stone-400">
           <div className="flex justify-between">
             <span>Subtotal</span>
             <span>{formatCOP(subtotal)}</span>
@@ -210,7 +210,7 @@ export function CheckoutForm() {
             <span>{formatCOP(shipping)}</span>
           </div>
         </div>
-        <div className="mt-2 flex justify-between border-t border-zinc-200 pt-2 text-base font-semibold text-zinc-900 dark:border-zinc-800 dark:text-zinc-50">
+        <div className="mt-2 flex justify-between border-t border-stone-200 pt-2 text-base font-semibold text-stone-900 dark:border-stone-800 dark:text-stone-50">
           <span>Total</span>
           <span>{formatCOP(subtotal + shipping)}</span>
         </div>
@@ -226,7 +226,7 @@ export function CheckoutForm() {
           type="button"
           onClick={handleCancel}
           disabled={submitting}
-          className="mt-3 w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-brand-300 hover:text-brand-700 disabled:opacity-60 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-brand-300"
+          className="mt-3 w-full rounded-full border border-stone-300 px-6 py-3 text-sm font-medium text-stone-700 transition-colors hover:border-brand-300 hover:text-brand-700 disabled:opacity-60 dark:border-stone-700 dark:text-stone-300 dark:hover:text-brand-300"
         >
           Cancelar compra
         </button>

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f5;
+  --foreground: #1c1917;
 }
 
 @theme inline {
@@ -29,12 +29,22 @@
 
   /* Papel: crema cálido, más suave que el blanco puro para lectura larga. */
   --color-paper: #faf8f5;
+
+  /* Tinta: negro cálido para el modo nocturno. No es negro puro — mantiene
+     el mismo sesgo cálido del papel, para que ambos modos se sientan la
+     misma marca en distinta luz. */
+  --color-ink: #14120f;
+
+  /* Superficie elevada en oscuro (tarjetas, resúmenes). El escalón con
+     --color-ink es de 1.18:1, suficiente para leerse como elevación sin
+     lavar el fondo. */
+  --color-ink-raised: #26221b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #14120f;
+    --foreground: #e7e2da;
   }
 }
 

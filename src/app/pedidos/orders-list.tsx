@@ -22,7 +22,7 @@ export function OrdersList() {
     return (
       <div className="flex flex-col items-center gap-4 py-20 text-center">
         <span className="text-4xl">🧾</span>
-        <p className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
+        <p className="text-lg font-medium text-stone-900 dark:text-stone-50">
           Aún no tienes pedidos
         </p>
         <Link
@@ -41,13 +41,13 @@ export function OrdersList() {
         <li key={order.id}>
           <Link
             href={`/pedido/${order.id}`}
-            className="flex flex-col gap-4 rounded-lg border border-zinc-200 bg-white p-5 transition-colors hover:border-brand-300 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800 dark:bg-zinc-900"
+            className="flex flex-col gap-4 rounded-lg border border-stone-200 bg-white p-5 transition-colors hover:border-brand-300 sm:flex-row sm:items-center sm:justify-between dark:border-stone-800 dark:bg-ink-raised"
           >
             <div>
-              <p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
+              <p className="text-sm font-medium text-stone-900 dark:text-stone-50">
                 Pedido {order.id}
               </p>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+              <p className="text-xs text-stone-500 dark:text-stone-400">
                 {new Date(order.createdAt).toLocaleDateString("es-CO", {
                   day: "numeric",
                   month: "long",
@@ -64,12 +64,12 @@ export function OrdersList() {
                   alt={`Portada de ${item.title}`}
                   width={32}
                   height={48}
-                  className="rounded border-2 border-white dark:border-zinc-900"
+                  className="rounded border-2 border-white dark:border-stone-900"
                 />
               ))}
             </div>
 
-            <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+            <p className="text-sm font-semibold text-stone-900 dark:text-stone-50">
               {formatCOP(order.total)}
             </p>
           </Link>

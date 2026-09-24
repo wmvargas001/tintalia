@@ -10,7 +10,7 @@ export function CartIcon() {
     <Link
       href="/carrito"
       aria-label="Ver carrito de compras"
-      className="relative inline-flex items-center rounded-full border border-brand-200 p-2 text-brand-700 transition-colors hover:bg-brand-50 dark:border-zinc-700 dark:text-brand-200 dark:hover:bg-zinc-900"
+      className="relative inline-flex items-center rounded-full border border-brand-200 p-2 text-brand-700 transition-colors hover:bg-brand-50 dark:border-stone-700 dark:text-brand-200 dark:hover:bg-brand-950/50"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

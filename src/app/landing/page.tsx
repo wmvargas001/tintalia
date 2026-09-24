@@ -42,27 +42,27 @@ export default function LandingPage() {
   const highlights = getAllBooks().slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-paper dark:bg-zinc-950">
+    <div className="min-h-screen bg-paper dark:bg-ink">
       <header className="px-6 py-5">
         <div className="mx-auto max-w-3xl">
           <Link
             href="/"
-            className="text-xl font-serif font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
+            className="text-xl font-serif font-semibold tracking-tight text-stone-900 dark:text-stone-50"
           >
             Tintalia
           </Link>
         </div>
       </header>
 
-      <section className="border-b border-brand-100 bg-gradient-to-b from-brand-50 to-paper px-6 py-16 dark:border-zinc-800 dark:from-zinc-900 dark:to-black">
+      <section className="border-b border-brand-100 bg-gradient-to-b from-brand-50 to-paper px-6 py-16 dark:border-brand-900/60 dark:from-brand-950 dark:to-ink">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
           <span className="rounded-full bg-brand-700 px-4 py-1 text-xs font-medium text-white dark:bg-brand-600">
             10% de descuento en tu primer pedido
           </span>
-          <h1 className="max-w-xl font-serif text-5xl font-semibold leading-[1.05] text-zinc-900 sm:text-6xl dark:text-zinc-50">
+          <h1 className="max-w-xl font-serif text-5xl font-semibold leading-[1.05] text-stone-900 sm:text-6xl dark:text-stone-50">
             Tu próxima lectura te espera en Tintalia
           </h1>
-          <p className="max-w-md text-zinc-600 dark:text-zinc-400">
+          <p className="max-w-md text-stone-600 dark:text-stone-400">
             Literatura clásica y contemporánea, curada para lectores
             colombianos, con envío rápido a todo el país.
           </p>
@@ -75,7 +75,7 @@ export default function LandingPage() {
             </a>
             <Link
               href="/"
-              className="rounded-full border border-zinc-300 px-8 py-3.5 text-sm font-medium text-zinc-700 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-brand-300"
+              className="rounded-full border border-stone-300 px-8 py-3.5 text-sm font-medium text-stone-700 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-stone-700 dark:text-stone-300 dark:hover:text-brand-300"
             >
               Ver catálogo completo
             </Link>
@@ -89,15 +89,15 @@ export default function LandingPage() {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="group flex flex-col items-center gap-2 rounded-lg p-4 text-center transition-colors hover:bg-brand-50/60 dark:hover:bg-zinc-900"
+              className="group flex flex-col items-center gap-2 rounded-lg p-4 text-center transition-colors hover:bg-brand-50/60 dark:hover:bg-brand-950/50"
             >
               <span className="text-3xl transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110">
                 {benefit.icon}
               </span>
-              <p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
+              <p className="text-sm font-medium text-stone-900 dark:text-stone-50">
                 {benefit.title}
               </p>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+              <p className="text-xs text-stone-500 dark:text-stone-400">
                 {benefit.description}
               </p>
             </div>
@@ -105,9 +105,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="border-y border-zinc-200 bg-white px-6 py-14 dark:border-zinc-800 dark:bg-zinc-900">
+      <section className="border-y border-stone-200 bg-white px-6 py-14 dark:border-stone-800 dark:bg-ink-raised">
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-stone-900 dark:text-stone-50">
             Los favoritos de nuestros lectores
           </h2>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
@@ -125,13 +125,13 @@ export default function LandingPage() {
                     height={192}
                   />
                 </div>
-                <h3 className="mt-1 font-serif text-base font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-brand-700 dark:text-zinc-50 dark:group-hover:text-brand-300">
+                <h3 className="mt-1 font-serif text-base font-semibold leading-snug text-stone-900 transition-colors group-hover:text-brand-700 dark:text-stone-50 dark:group-hover:text-brand-300">
                   {book.title}
                 </h3>
-                <p className="text-sm font-semibold tabular-nums text-zinc-900 dark:text-zinc-50">
+                <p className="text-sm font-semibold tabular-nums text-stone-900 dark:text-stone-50">
                   {formatCOP(book.price)}
                 </p>
-                <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                <p className="text-xs leading-relaxed text-stone-500 dark:text-stone-400">
                   {book.description}
                 </p>
               </Link>
@@ -142,20 +142,20 @@ export default function LandingPage() {
 
       <section className="px-6 py-14">
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-stone-900 dark:text-stone-50">
             Lo que dicen nuestros lectores
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.author}
-                className="rounded-lg border border-zinc-200 p-5 transition-all hover:-translate-y-1 hover:shadow-md dark:border-zinc-800"
+                className="rounded-lg border border-stone-200 p-5 transition-all hover:-translate-y-1 hover:shadow-md dark:border-stone-800"
               >
                 <span className="text-amber-500">★★★★★</span>
-                <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
+                <p className="mt-2 text-sm text-stone-700 dark:text-stone-300">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
-                <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                <p className="mt-3 text-xs font-medium text-stone-500 dark:text-stone-400">
                   {testimonial.author}
                 </p>
               </div>
@@ -180,9 +180,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-zinc-200 px-6 py-10 text-center dark:border-zinc-800">
+      <footer className="border-t border-stone-200 px-6 py-10 text-center dark:border-stone-800">
         <SocialLinks />
-        <p className="mx-auto mt-6 max-w-md text-xs text-zinc-400 dark:text-zinc-600">
+        <p className="mx-auto mt-6 max-w-md text-xs text-stone-400 dark:text-stone-600">
           Recuerda: {featured.title} y más de tu autor favorito te esperan en{" "}
           <Link href="/" className="underline hover:text-brand-700">
             el catálogo completo

@@ -26,7 +26,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
     return (
       <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 py-20 text-center">
         <span className="h-14 w-14 animate-pulse rounded-full bg-brand-100 dark:bg-brand-800/40" />
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm text-stone-500 dark:text-stone-400">
           Confirmando tu pedido...
         </p>
       </div>
@@ -36,7 +36,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
   if (order === null) {
     return (
       <div className="flex flex-col items-center gap-4 py-20 text-center">
-        <p className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
+        <p className="text-lg font-medium text-stone-900 dark:text-stone-50">
           No encontramos este pedido
         </p>
         <Link
@@ -58,16 +58,16 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-100 text-2xl dark:bg-brand-800/40">
           ✓
         </span>
-        <h1 className="font-serif text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+        <h1 className="font-serif text-2xl font-semibold text-stone-900 dark:text-stone-50">
           ¡Pedido confirmado!
         </h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm text-stone-500 dark:text-stone-400">
           Pedido <span className="font-medium">{order.id}</span> pagado con{" "}
           {paymentLabels[order.paymentMethod]}
         </p>
       </div>
 
-      <div className="mt-8 rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="mt-8 rounded-lg border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-ink-raised">
         <ul className="flex flex-col gap-3">
           {order.items.map((item) => (
             <li key={item.slug} className="flex items-center gap-3">
@@ -76,24 +76,24 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
                 alt={`Portada de ${item.title}`}
                 width={40}
                 height={60}
-                className="rounded border border-zinc-200 dark:border-zinc-800"
+                className="rounded border border-stone-200 dark:border-stone-800"
               />
               <div className="flex-1 text-sm">
-                <p className="text-zinc-900 dark:text-zinc-50">
+                <p className="text-stone-900 dark:text-stone-50">
                   {item.title}
                 </p>
-                <p className="text-zinc-500 dark:text-zinc-400">
+                <p className="text-stone-500 dark:text-stone-400">
                   x{item.quantity}
                 </p>
               </div>
-              <p className="text-sm text-zinc-900 dark:text-zinc-50">
+              <p className="text-sm text-stone-900 dark:text-stone-50">
                 {formatCOP(item.price * item.quantity)}
               </p>
             </li>
           ))}
         </ul>
 
-        <div className="mt-4 space-y-1 border-t border-zinc-200 pt-4 text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
+        <div className="mt-4 space-y-1 border-t border-stone-200 pt-4 text-sm text-stone-600 dark:border-stone-800 dark:text-stone-400">
           <div className="flex justify-between">
             <span>Subtotal</span>
             <span>{formatCOP(order.subtotal)}</span>
@@ -103,20 +103,20 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
             <span>{formatCOP(order.shipping)}</span>
           </div>
         </div>
-        <div className="mt-2 flex justify-between border-t border-zinc-200 pt-2 text-base font-semibold text-zinc-900 dark:border-zinc-800 dark:text-zinc-50">
+        <div className="mt-2 flex justify-between border-t border-stone-200 pt-2 text-base font-semibold text-stone-900 dark:border-stone-800 dark:text-stone-50">
           <span>Total pagado</span>
           <span>{formatCOP(order.total)}</span>
         </div>
       </div>
 
-      <div className="mt-6 rounded-lg border border-zinc-200 bg-white p-6 text-sm dark:border-zinc-800 dark:bg-zinc-900">
-        <p className="font-medium text-zinc-900 dark:text-zinc-50">
+      <div className="mt-6 rounded-lg border border-stone-200 bg-white p-6 text-sm dark:border-stone-800 dark:bg-ink-raised">
+        <p className="font-medium text-stone-900 dark:text-stone-50">
           Enviado a {order.customer.name}
         </p>
-        <p className="text-zinc-500 dark:text-zinc-400">
+        <p className="text-stone-500 dark:text-stone-400">
           {order.customer.address}, {order.customer.city}
         </p>
-        <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+        <p className="mt-2 text-stone-500 dark:text-stone-400">
           Llegada estimada:{" "}
           {estimatedDate.toLocaleDateString("es-CO", {
             day: "numeric",
@@ -125,7 +125,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
         </p>
       </div>
 
-      <p className="mt-6 text-center text-xs text-zinc-400 dark:text-zinc-600">
+      <p className="mt-6 text-center text-xs text-stone-400 dark:text-stone-600">
         Tienes 5 días hábiles desde la entrega para ejercer tu derecho de
         retracto. Escríbenos a hola@tintalia.co
       </p>

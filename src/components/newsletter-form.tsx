@@ -28,7 +28,7 @@ export function NewsletterForm() {
         required
         placeholder="tu@correo.com"
         aria-label="Correo electrónico"
-        className="w-full rounded-full border border-zinc-300 bg-white px-4 py-2.5 text-sm text-zinc-900 outline-none focus:border-brand-500 sm:w-64 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+        className="w-full rounded-full border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 outline-none focus:border-brand-500 sm:w-64 dark:border-stone-700 dark:bg-ink-raised dark:text-stone-50"
       />
       <button
         type="submit"

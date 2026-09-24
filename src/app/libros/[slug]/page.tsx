@@ -20,13 +20,13 @@ export default async function BookPage({
   }
 
   return (
-    <div className="min-h-screen bg-paper dark:bg-zinc-950">
+    <div className="min-h-screen bg-paper dark:bg-ink">
       <SiteHeader />
 
       <main className="mx-auto max-w-4xl px-6 py-14">
         <Link
           href="/"
-          className="mb-8 inline-block text-sm text-zinc-500 transition-colors hover:text-brand-700 dark:text-zinc-400 dark:hover:text-brand-300"
+          className="mb-8 inline-block text-sm text-stone-500 transition-colors hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300"
         >
           ← Volver al catálogo
         </Link>
@@ -54,10 +54,10 @@ export default async function BookPage({
                   </span>
                 )}
               </div>
-              <h1 className="font-serif text-4xl font-semibold leading-[1.1] text-zinc-900 dark:text-zinc-50">
+              <h1 className="font-serif text-4xl font-semibold leading-[1.1] text-stone-900 dark:text-stone-50">
                 {book.title}
               </h1>
-              <p className="mt-2 text-[15px] text-zinc-500 dark:text-zinc-400">
+              <p className="mt-2 text-[15px] text-stone-500 dark:text-stone-400">
                 {book.author}
               </p>
               <div className="mt-2">
@@ -69,11 +69,11 @@ export default async function BookPage({
               </div>
             </div>
 
-            <p className="text-3xl font-semibold tabular-nums text-zinc-900 dark:text-zinc-50">
+            <p className="text-3xl font-semibold tabular-nums text-stone-900 dark:text-stone-50">
               {formatCOP(book.price)}
             </p>
 
-            <p className="max-w-prose text-[15px] leading-[1.75] text-zinc-700 dark:text-zinc-300">
+            <p className="max-w-prose text-[15px] leading-[1.75] text-stone-700 dark:text-stone-300">
               {book.description}
             </p>
 
@@ -84,7 +84,7 @@ export default async function BookPage({
                   className={`text-sm ${
                     book.stock <= 5
                       ? "font-medium text-amber-700 dark:text-amber-400"
-                      : "text-zinc-500 dark:text-zinc-400"
+                      : "text-stone-500 dark:text-stone-400"
                   }`}
                 >
                   {book.stock <= 5
@@ -93,7 +93,7 @@ export default async function BookPage({
                 </span>
               </div>
             ) : (
-              <p className="w-fit rounded-full bg-zinc-200 px-6 py-3 text-sm font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+              <p className="w-fit rounded-full bg-stone-200 px-6 py-3 text-sm font-medium text-stone-500 dark:bg-stone-800 dark:text-stone-400">
                 Agotado
               </p>
             )}

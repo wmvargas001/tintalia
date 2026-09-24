@@ -32,7 +32,7 @@ export function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={social.name}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:text-brand-700 dark:border-zinc-700 dark:text-zinc-400 dark:hover:text-brand-300"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-stone-500 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:text-brand-700 dark:border-stone-700 dark:text-stone-400 dark:hover:text-brand-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

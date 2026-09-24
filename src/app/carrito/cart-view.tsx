@@ -12,10 +12,10 @@ export function CartView() {
     return (
       <div className="flex flex-col items-center gap-4 py-20 text-center">
         <span className="text-4xl">📚</span>
-        <p className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
+        <p className="text-lg font-medium text-stone-900 dark:text-stone-50">
           Tu carrito está vacío
         </p>
-        <p className="max-w-xs text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="max-w-xs text-sm text-stone-500 dark:text-stone-400">
           Explora el catálogo y encuentra tu próxima lectura.
         </p>
         <Link
@@ -34,11 +34,11 @@ export function CartView() {
         {items.map((item) => (
           <li
             key={item.slug}
-            className="flex gap-4 rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
+            className="flex gap-4 rounded-lg border border-stone-200 bg-white p-4 dark:border-stone-800 dark:bg-ink-raised"
           >
             <Link
               href={`/libros/${item.slug}`}
-              className="shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800"
+              className="shrink-0 overflow-hidden rounded-md border border-stone-200 dark:border-stone-800"
             >
               <Image
                 src={item.coverUrl}
@@ -52,11 +52,11 @@ export function CartView() {
               <div>
                 <Link
                   href={`/libros/${item.slug}`}
-                  className="text-sm font-medium text-zinc-900 hover:text-brand-700 dark:text-zinc-50 dark:hover:text-brand-300"
+                  className="text-sm font-medium text-stone-900 hover:text-brand-700 dark:text-stone-50 dark:hover:text-brand-300"
                 >
                   {item.title}
                 </Link>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                <p className="text-sm text-stone-500 dark:text-stone-400">
                   {item.author}
                 </p>
               </div>
@@ -67,23 +67,23 @@ export function CartView() {
                     type="button"
                     aria-label="Disminuir cantidad"
                     onClick={() => setQuantity(item.slug, item.quantity - 1)}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-300 text-zinc-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-zinc-700 dark:text-zinc-300"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-stone-700 dark:text-stone-300"
                   >
                     −
                   </button>
-                  <span className="w-5 text-center text-sm text-zinc-900 dark:text-zinc-50">
+                  <span className="w-5 text-center text-sm text-stone-900 dark:text-stone-50">
                     {item.quantity}
                   </span>
                   <button
                     type="button"
                     aria-label="Aumentar cantidad"
                     onClick={() => setQuantity(item.slug, item.quantity + 1)}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-300 text-zinc-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-zinc-700 dark:text-zinc-300"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-stone-700 dark:text-stone-300"
                   >
                     +
                   </button>
                 </div>
-                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                <p className="text-sm font-semibold text-stone-900 dark:text-stone-50">
                   {formatCOP(item.price * item.quantity)}
                 </p>
               </div>
@@ -93,7 +93,7 @@ export function CartView() {
               type="button"
               aria-label={`Quitar ${item.title} del carrito`}
               onClick={() => removeItem(item.slug)}
-              className="self-start text-zinc-400 transition-colors hover:text-brand-700 dark:text-zinc-600 dark:hover:text-brand-300"
+              className="self-start text-stone-400 transition-colors hover:text-brand-700 dark:text-stone-600 dark:hover:text-brand-300"
             >
               ✕
             </button>
@@ -101,18 +101,18 @@ export function CartView() {
         ))}
       </ul>
 
-      <aside className="h-fit rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h2 className="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-50">
+      <aside className="h-fit rounded-lg border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-ink-raised">
+        <h2 className="mb-4 text-sm font-medium text-stone-900 dark:text-stone-50">
           Resumen
         </h2>
-        <div className="flex items-center justify-between text-sm text-zinc-600 dark:text-zinc-400">
+        <div className="flex items-center justify-between text-sm text-stone-600 dark:text-stone-400">
           <span>Subtotal</span>
           <span>{formatCOP(subtotal)}</span>
         </div>
-        <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-600">
+        <p className="mt-1 text-xs text-stone-400 dark:text-stone-600">
           Envío calculado en el siguiente paso.
         </p>
-        <div className="mt-4 flex items-center justify-between border-t border-zinc-200 pt-4 text-base font-semibold text-zinc-900 dark:border-zinc-800 dark:text-zinc-50">
+        <div className="mt-4 flex items-center justify-between border-t border-stone-200 pt-4 text-base font-semibold text-stone-900 dark:border-stone-800 dark:text-stone-50">
           <span>Total</span>
           <span>{formatCOP(subtotal)}</span>
         </div>
@@ -124,7 +124,7 @@ export function CartView() {
         </Link>
         <Link
           href="/"
-          className="mt-3 block text-center text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+          className="mt-3 block text-center text-sm text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-50"
         >
           Seguir explorando
         </Link>

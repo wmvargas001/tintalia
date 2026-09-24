@@ -3,16 +3,16 @@ import { CartIcon } from "./cart-icon";
 
 export function SiteHeader({ categories = [] }: { categories?: string[] }) {
   return (
-    <header className="sticky top-0 z-10 border-b border-brand-100 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
+    <header className="sticky top-0 z-10 border-b border-brand-100 bg-white/80 px-6 py-4 backdrop-blur dark:border-stone-800 dark:bg-ink/80">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4">
         <Link
           href="/landing"
-          className="text-xl font-serif font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
+          className="text-xl font-serif font-semibold tracking-tight text-stone-900 dark:text-stone-50"
         >
           Tintalia
         </Link>
         {categories.length > 0 && (
-          <nav className="hidden gap-6 text-sm text-zinc-600 sm:flex dark:text-zinc-400">
+          <nav className="hidden gap-6 text-sm text-stone-600 sm:flex dark:text-stone-400">
             {categories.map((category) => (
               <Link
                 key={category}
@@ -27,7 +27,7 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
         <div className="flex items-center gap-4">
           <Link
             href="/pedidos"
-            className="hidden text-sm text-zinc-600 hover:text-brand-700 sm:block dark:text-zinc-400 dark:hover:text-brand-300"
+            className="hidden text-sm text-stone-600 hover:text-brand-700 sm:block dark:text-stone-400 dark:hover:text-brand-300"
           >
             Mis pedidos
           </Link>
