@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
 import { getAllBooks, getCategories, getFeaturedBook } from "@/lib/books";
 import { formatCOP } from "@/lib/format";
 
@@ -28,24 +29,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
-      <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <Link
-            href="/"
-            className="text-xl font-serif font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
-          >
-            Tintalia
-          </Link>
-          <nav className="hidden gap-6 text-sm text-zinc-600 sm:flex dark:text-zinc-400">
-            {categories.map((category) => (
-              <span key={category}>{category}</span>
-            ))}
-          </nav>
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">
-            {books.length} libros disponibles
-          </span>
-        </div>
-      </header>
+      <SiteHeader categories={categories} />
 
       <section className="border-b border-rose-100 bg-gradient-to-b from-rose-50 to-stone-50 dark:border-zinc-800 dark:from-zinc-900 dark:to-black">
         <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-6 py-16 sm:grid-cols-[1fr_200px]">

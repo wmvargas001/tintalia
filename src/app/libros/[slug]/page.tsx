@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AddToCartButton } from "@/components/add-to-cart-button";
+import { SiteHeader } from "@/components/site-header";
 import { getBookBySlug } from "@/lib/books";
 import { formatCOP } from "@/lib/format";
 
@@ -18,14 +20,7 @@ export default async function BookPage({
 
   return (
     <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
-      <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
-        <Link
-          href="/"
-          className="text-xl font-serif font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
-        >
-          Tintalia
-        </Link>
-      </header>
+      <SiteHeader />
 
       <main className="mx-auto max-w-4xl px-6 py-12">
         <Link
@@ -70,12 +65,7 @@ export default async function BookPage({
 
             {book.stock > 0 ? (
               <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  className="w-fit rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
-                >
-                  Agregar al carrito
-                </button>
+                <AddToCartButton book={book} />
                 <span className="text-sm text-zinc-500 dark:text-zinc-400">
                   {book.stock} disponibles
                 </span>
