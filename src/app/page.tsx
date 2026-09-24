@@ -27,7 +27,7 @@ const trustPoints = [
 const testimonials = [
   {
     quote:
-      "Pedí un libro un lunes y el miércoles ya lo tenía en Pereira. Excelente empaque.",
+      "Pedí un libro un lunes y el miércoles ya lo tenía en Titiribí. Excelente empaque.",
     author: "Camila R.",
   },
   {
