@@ -13,6 +13,9 @@ const books: Book[] = [
     category: "Ficción",
     stock: 12,
     featured: true,
+    bestseller: true,
+    rating: 4.8,
+    reviewCount: 214,
   },
   {
     slug: "el-otono-del-patriarca",
@@ -25,6 +28,8 @@ const books: Book[] = [
       "Un retrato del poder absoluto a través de la figura de un dictador latinoamericano sin nombre.",
     category: "Ficción",
     stock: 5,
+    rating: 4.5,
+    reviewCount: 87,
   },
   {
     slug: "la-vorágine",
@@ -37,6 +42,8 @@ const books: Book[] = [
       "Novela colombiana que narra la aventura y tragedia de Arturo Cova en la selva amazónica.",
     category: "Clásicos",
     stock: 0,
+    rating: 4.3,
+    reviewCount: 52,
   },
 ];
 

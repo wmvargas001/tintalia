@@ -9,4 +9,7 @@ export type Book = {
   category: string;
   stock: number;
   featured?: boolean;
+  rating: number;
+  reviewCount: number;
+  bestseller?: boolean;
 };

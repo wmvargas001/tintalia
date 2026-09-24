@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BookCover } from "@/components/book-cover";
+import { NewsletterForm } from "@/components/newsletter-form";
 import { SiteHeader } from "@/components/site-header";
+import { StarRating } from "@/components/star-rating";
 import { getAllBooks, getCategories, getFeaturedBook } from "@/lib/books";
 import { formatCOP } from "@/lib/format";
 
@@ -22,6 +24,23 @@ const trustPoints = [
   },
 ];
 
+const testimonials = [
+  {
+    quote:
+      "Pedí un libro un lunes y el miércoles ya lo tenía en Pereira. Excelente empaque.",
+    author: "Camila R.",
+  },
+  {
+    quote:
+      "El catálogo de clásicos colombianos es difícil de encontrar en otras tiendas. Volví a comprar.",
+    author: "Andrés M.",
+  },
+  {
+    quote: "Pago fácil y seguimiento claro del pedido. Se los recomiendo.",
+    author: "Laura G.",
+  },
+];
+
 export default function Home() {
   const books = getAllBooks();
   const featured = getFeaturedBook();
@@ -35,7 +54,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-6 py-16 sm:grid-cols-[1fr_200px]">
           <div>
             <p className="mb-3 text-sm font-medium uppercase tracking-wide text-rose-800 dark:text-rose-400">
-              Nueva llegada
+              {featured.bestseller ? "Más vendido" : "Nueva llegada"}
             </p>
             <h1 className="max-w-xl font-serif text-4xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-50">
               Libros que se quedan contigo
@@ -44,9 +63,17 @@ export default function Home() {
               Una selección curada de literatura clásica y contemporánea,
               entregada donde estés en Colombia.
             </p>
+            <div className="mt-3 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+              <StarRating
+                rating={4.7}
+                reviewCount={353}
+                size="md"
+              />
+              <span>· lectores en Colombia</span>
+            </div>
             <Link
               href={`/libros/${featured.slug}`}
-              className="mt-6 inline-block rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
+              className="mt-6 inline-block rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-all hover:scale-[1.03] hover:bg-rose-800 hover:shadow-lg active:scale-[0.98] dark:bg-rose-700 dark:hover:bg-rose-600"
             >
               Ver {featured.title}
             </Link>
@@ -69,8 +96,13 @@ export default function Home() {
       <section className="border-b border-zinc-200 px-6 py-10 dark:border-zinc-800">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3">
           {trustPoints.map((point) => (
-            <div key={point.title} className="flex gap-3">
-              <span className="text-2xl">{point.icon}</span>
+            <div
+              key={point.title}
+              className="group flex gap-3 rounded-lg p-2 transition-colors hover:bg-rose-50/60 dark:hover:bg-zinc-900"
+            >
+              <span className="text-2xl transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110">
+                {point.icon}
+              </span>
               <div>
                 <p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
                   {point.title}
@@ -115,9 +147,16 @@ export default function Home() {
                   width={240}
                   height={360}
                 />
-                <span className="pointer-events-none absolute left-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-zinc-700 shadow-sm dark:bg-black/70 dark:text-zinc-200">
-                  {book.category}
-                </span>
+                <div className="pointer-events-none absolute left-2 top-2 flex flex-col gap-1">
+                  <span className="rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-zinc-700 shadow-sm dark:bg-black/70 dark:text-zinc-200">
+                    {book.category}
+                  </span>
+                  {book.bestseller && (
+                    <span className="rounded-full bg-rose-900 px-2 py-0.5 text-[11px] font-medium text-white shadow-sm dark:bg-rose-700">
+                      Más vendido
+                    </span>
+                  )}
+                </div>
                 {book.stock === 0 && (
                   <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40">
                     <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-zinc-900">
@@ -133,14 +172,62 @@ export default function Home() {
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
                   {book.author}
                 </p>
+                <StarRating
+                  rating={book.rating}
+                  reviewCount={book.reviewCount}
+                />
                 <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                   {formatCOP(book.price)}
                 </p>
+                {book.stock > 0 && book.stock <= 5 && (
+                  <p className="text-xs font-medium text-amber-700 dark:text-amber-400">
+                    ¡Solo quedan {book.stock}!
+                  </p>
+                )}
               </div>
             </Link>
           ))}
         </div>
       </main>
+
+      <section className="border-y border-zinc-200 bg-white px-6 py-14 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-8 text-center font-serif text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+            Lo que dicen nuestros lectores
+          </h2>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <div
+                key={testimonial.author}
+                className="rounded-lg border border-zinc-200 p-5 transition-all hover:-translate-y-1 hover:shadow-md dark:border-zinc-800"
+              >
+                <span className="text-amber-500">★★★★★</span>
+                <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                  {testimonial.author}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-14">
+        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 rounded-xl bg-gradient-to-r from-rose-900 to-rose-800 p-8 text-white sm:flex-row sm:items-center dark:from-rose-950 dark:to-rose-900">
+          <div>
+            <h2 className="font-serif text-xl font-semibold">
+              Recibe recomendaciones y descuentos
+            </h2>
+            <p className="mt-1 text-sm text-rose-100">
+              Únete a nuestra comunidad de lectores. Sin spam, cancela cuando
+              quieras.
+            </p>
+          </div>
+          <NewsletterForm />
+        </div>
+      </section>
 
       <footer className="border-t border-zinc-200 px-6 py-12 dark:border-zinc-800">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-3">
