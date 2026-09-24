@@ -20,7 +20,7 @@ export function CartView() {
         </p>
         <Link
           href="/"
-          className="mt-2 rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
+          className="mt-2 rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600 dark:bg-brand-600 dark:hover:bg-brand-500"
         >
           Ver catálogo
         </Link>
@@ -52,7 +52,7 @@ export function CartView() {
               <div>
                 <Link
                   href={`/libros/${item.slug}`}
-                  className="text-sm font-medium text-zinc-900 hover:text-rose-800 dark:text-zinc-50 dark:hover:text-rose-400"
+                  className="text-sm font-medium text-zinc-900 hover:text-brand-700 dark:text-zinc-50 dark:hover:text-brand-300"
                 >
                   {item.title}
                 </Link>
@@ -67,7 +67,7 @@ export function CartView() {
                     type="button"
                     aria-label="Disminuir cantidad"
                     onClick={() => setQuantity(item.slug, item.quantity - 1)}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-300 text-zinc-600 transition-colors hover:border-rose-300 hover:text-rose-800 dark:border-zinc-700 dark:text-zinc-300"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-300 text-zinc-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-zinc-700 dark:text-zinc-300"
                   >
                     −
                   </button>
@@ -78,7 +78,7 @@ export function CartView() {
                     type="button"
                     aria-label="Aumentar cantidad"
                     onClick={() => setQuantity(item.slug, item.quantity + 1)}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-300 text-zinc-600 transition-colors hover:border-rose-300 hover:text-rose-800 dark:border-zinc-700 dark:text-zinc-300"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-300 text-zinc-600 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-zinc-700 dark:text-zinc-300"
                   >
                     +
                   </button>
@@ -93,7 +93,7 @@ export function CartView() {
               type="button"
               aria-label={`Quitar ${item.title} del carrito`}
               onClick={() => removeItem(item.slug)}
-              className="self-start text-zinc-400 transition-colors hover:text-rose-700 dark:text-zinc-600 dark:hover:text-rose-400"
+              className="self-start text-zinc-400 transition-colors hover:text-brand-700 dark:text-zinc-600 dark:hover:text-brand-300"
             >
               ✕
             </button>
@@ -118,7 +118,7 @@ export function CartView() {
         </div>
         <Link
           href="/checkout"
-          className="mt-6 block w-full rounded-full bg-rose-900 px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
+          className="mt-6 block w-full rounded-full bg-brand-700 px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-brand-600 dark:bg-brand-600 dark:hover:bg-brand-500"
         >
           Continuar compra
         </Link>

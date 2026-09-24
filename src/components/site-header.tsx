@@ -3,7 +3,7 @@ import { CartIcon } from "./cart-icon";
 
 export function SiteHeader({ categories = [] }: { categories?: string[] }) {
   return (
-    <header className="sticky top-0 z-10 border-b border-rose-100 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
+    <header className="sticky top-0 z-10 border-b border-brand-100 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4">
         <Link
           href="/landing"
@@ -17,7 +17,7 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
               <Link
                 key={category}
                 href={`/?categoria=${encodeURIComponent(category)}`}
-                className="transition-colors hover:text-rose-800 dark:hover:text-rose-400"
+                className="transition-colors hover:text-brand-700 dark:hover:text-brand-300"
               >
                 {category}
               </Link>
@@ -27,7 +27,7 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
         <div className="flex items-center gap-4">
           <Link
             href="/pedidos"
-            className="hidden text-sm text-zinc-600 hover:text-rose-800 sm:block dark:text-zinc-400 dark:hover:text-rose-400"
+            className="hidden text-sm text-zinc-600 hover:text-brand-700 sm:block dark:text-zinc-400 dark:hover:text-brand-300"
           >
             Mis pedidos
           </Link>

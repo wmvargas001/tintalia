@@ -25,7 +25,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
   if (order === undefined) {
     return (
       <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 py-20 text-center">
-        <span className="h-14 w-14 animate-pulse rounded-full bg-rose-100 dark:bg-rose-900/40" />
+        <span className="h-14 w-14 animate-pulse rounded-full bg-brand-100 dark:bg-brand-800/40" />
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           Confirmando tu pedido...
         </p>
@@ -41,7 +41,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
         </p>
         <Link
           href="/"
-          className="rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
+          className="rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600 dark:bg-brand-600 dark:hover:bg-brand-500"
         >
           Volver al catálogo
         </Link>
@@ -55,7 +55,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
   return (
     <div className="mx-auto max-w-2xl">
       <div className="flex flex-col items-center gap-2 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-rose-100 text-2xl dark:bg-rose-900/40">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-100 text-2xl dark:bg-brand-800/40">
           ✓
         </span>
         <h1 className="font-serif text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
@@ -133,7 +133,7 @@ export function OrderConfirmation({ orderId }: { orderId: string }) {
       <div className="mt-6 text-center">
         <Link
           href="/"
-          className="text-sm font-medium text-rose-800 hover:underline dark:text-rose-400"
+          className="text-sm font-medium text-brand-700 hover:underline dark:text-brand-300"
         >
           Seguir comprando
         </Link>

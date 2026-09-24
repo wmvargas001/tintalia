@@ -42,7 +42,7 @@ export default function LandingPage() {
   const highlights = getAllBooks().slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-paper dark:bg-zinc-950">
       <header className="px-6 py-5">
         <div className="mx-auto max-w-3xl">
           <Link
@@ -54,9 +54,9 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <section className="border-b border-rose-100 bg-gradient-to-b from-rose-50 to-stone-50 px-6 py-16 dark:border-zinc-800 dark:from-zinc-900 dark:to-black">
+      <section className="border-b border-brand-100 bg-gradient-to-b from-brand-50 to-paper px-6 py-16 dark:border-zinc-800 dark:from-zinc-900 dark:to-black">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
-          <span className="rounded-full bg-rose-900 px-4 py-1 text-xs font-medium text-white dark:bg-rose-700">
+          <span className="rounded-full bg-brand-700 px-4 py-1 text-xs font-medium text-white dark:bg-brand-600">
             10% de descuento en tu primer pedido
           </span>
           <h1 className="max-w-xl font-serif text-5xl font-semibold leading-[1.05] text-zinc-900 sm:text-6xl dark:text-zinc-50">
@@ -69,13 +69,13 @@ export default function LandingPage() {
           <div className="flex flex-col items-center gap-2 sm:flex-row">
             <a
               href="#suscribirse"
-              className="rounded-full bg-rose-900 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:scale-[1.03] hover:bg-rose-800 hover:shadow-lg active:scale-[0.98] dark:bg-rose-700 dark:hover:bg-rose-600"
+              className="rounded-full bg-brand-700 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:scale-[1.03] hover:bg-brand-600 hover:shadow-lg active:scale-[0.98] dark:bg-brand-600 dark:hover:bg-brand-500"
             >
               Obtener mi descuento
             </a>
             <Link
               href="/"
-              className="rounded-full border border-zinc-300 px-8 py-3.5 text-sm font-medium text-zinc-700 transition-colors hover:border-rose-300 hover:text-rose-800 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-rose-400"
+              className="rounded-full border border-zinc-300 px-8 py-3.5 text-sm font-medium text-zinc-700 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-brand-300"
             >
               Ver catálogo completo
             </Link>
@@ -89,7 +89,7 @@ export default function LandingPage() {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="group flex flex-col items-center gap-2 rounded-lg p-4 text-center transition-colors hover:bg-rose-50/60 dark:hover:bg-zinc-900"
+              className="group flex flex-col items-center gap-2 rounded-lg p-4 text-center transition-colors hover:bg-brand-50/60 dark:hover:bg-zinc-900"
             >
               <span className="text-3xl transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110">
                 {benefit.icon}
@@ -125,7 +125,7 @@ export default function LandingPage() {
                     height={192}
                   />
                 </div>
-                <h3 className="mt-1 font-serif text-base font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-rose-800 dark:text-zinc-50 dark:group-hover:text-rose-400">
+                <h3 className="mt-1 font-serif text-base font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-brand-700 dark:text-zinc-50 dark:group-hover:text-brand-300">
                   {book.title}
                 </h3>
                 <p className="text-sm font-semibold tabular-nums text-zinc-900 dark:text-zinc-50">
@@ -168,11 +168,11 @@ export default function LandingPage() {
         id="suscribirse"
         className="px-6 py-16 scroll-mt-6"
       >
-        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-xl bg-gradient-to-r from-rose-900 to-rose-800 p-10 text-center text-white dark:from-rose-950 dark:to-rose-900">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-xl bg-gradient-to-r from-brand-800 to-brand-600 p-10 text-center text-white dark:from-brand-950 dark:to-brand-800">
           <h2 className="font-serif text-3xl font-semibold leading-tight">
             Obtén 10% en tu primera compra
           </h2>
-          <p className="max-w-sm text-sm text-rose-100">
+          <p className="max-w-sm text-sm text-brand-100">
             Déjanos tu correo y te enviamos el código de descuento al
             instante.
           </p>
@@ -184,7 +184,7 @@ export default function LandingPage() {
         <SocialLinks />
         <p className="mx-auto mt-6 max-w-md text-xs text-zinc-400 dark:text-zinc-600">
           Recuerda: {featured.title} y más de tu autor favorito te esperan en{" "}
-          <Link href="/" className="underline hover:text-rose-700">
+          <Link href="/" className="underline hover:text-brand-700">
             el catálogo completo
           </Link>
           . © {new Date().getFullYear()} Tintalia.

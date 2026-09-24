@@ -35,7 +35,7 @@ export function CheckoutForm() {
         </p>
         <Link
           href="/"
-          className="rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
+          className="rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600 dark:bg-brand-600 dark:hover:bg-brand-500"
         >
           Ver catálogo
         </Link>
@@ -95,7 +95,7 @@ export function CheckoutForm() {
               <input
                 name="name"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-rose-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
               />
             </label>
             <label className="flex flex-col gap-1 text-sm text-zinc-700 dark:text-zinc-300">
@@ -104,7 +104,7 @@ export function CheckoutForm() {
                 name="email"
                 type="email"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-rose-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
               />
             </label>
             <label className="flex flex-col gap-1 text-sm text-zinc-700 dark:text-zinc-300">
@@ -112,7 +112,7 @@ export function CheckoutForm() {
               <input
                 name="phone"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-rose-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
               />
             </label>
             <label className="flex flex-col gap-1 text-sm text-zinc-700 dark:text-zinc-300">
@@ -120,7 +120,7 @@ export function CheckoutForm() {
               <input
                 name="city"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-rose-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
               />
             </label>
             <label className="flex flex-col gap-1 text-sm text-zinc-700 sm:col-span-2 dark:text-zinc-300">
@@ -128,7 +128,7 @@ export function CheckoutForm() {
               <input
                 name="address"
                 required
-                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-rose-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+                className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
               />
             </label>
           </div>
@@ -144,8 +144,8 @@ export function CheckoutForm() {
                 key={method.id}
                 className={`cursor-pointer rounded-lg border p-4 text-sm transition-colors ${
                   paymentMethod === method.id
-                    ? "border-rose-500 bg-rose-50 dark:border-rose-500 dark:bg-rose-900/20"
-                    : "border-zinc-300 hover:border-rose-300 dark:border-zinc-700"
+                    ? "border-brand-500 bg-brand-50 dark:border-brand-500 dark:bg-brand-800/20"
+                    : "border-zinc-300 hover:border-brand-300 dark:border-zinc-700"
                 }`}
               >
                 <input
@@ -218,7 +218,7 @@ export function CheckoutForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="mt-6 w-full rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 disabled:opacity-60 dark:bg-rose-700 dark:hover:bg-rose-600"
+          className="mt-6 w-full rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-600 disabled:opacity-60 dark:bg-brand-600 dark:hover:bg-brand-500"
         >
           {submitting ? "Procesando pago..." : "Pagar pedido"}
         </button>
@@ -226,7 +226,7 @@ export function CheckoutForm() {
           type="button"
           onClick={handleCancel}
           disabled={submitting}
-          className="mt-3 w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-rose-300 hover:text-rose-800 disabled:opacity-60 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-rose-400"
+          className="mt-3 w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-brand-300 hover:text-brand-700 disabled:opacity-60 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-brand-300"
         >
           Cancelar compra
         </button>

@@ -57,14 +57,14 @@ export default async function Home({
     : allBooks;
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-paper dark:bg-zinc-950">
       <SiteHeader categories={categories} />
 
-      <section className="relative overflow-hidden border-b border-rose-100/80 bg-gradient-to-b from-rose-50 via-stone-50 to-stone-50 dark:border-zinc-800 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-950">
+      <section className="relative overflow-hidden border-b border-brand-100/80 bg-gradient-to-b from-brand-50 via-paper to-paper dark:border-zinc-800 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-950">
         <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 px-6 py-20 sm:grid-cols-[1fr_220px] sm:py-24">
           <div>
-            <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-800 dark:text-rose-400">
-              <span className="h-px w-8 bg-rose-300 dark:bg-rose-800" />
+            <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">
+              <span className="h-px w-8 bg-brand-300 dark:bg-brand-700" />
               {featured.bestseller ? "Más vendido" : "Nueva llegada"}
             </p>
             <h1 className="max-w-xl font-serif text-5xl font-semibold leading-[1.05] text-zinc-900 sm:text-6xl dark:text-zinc-50">
@@ -80,7 +80,7 @@ export default async function Home({
             </div>
             <Link
               href={`/libros/${featured.slug}`}
-              className="mt-8 inline-block rounded-full bg-rose-900 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:scale-[1.03] hover:bg-rose-800 hover:shadow-lg active:scale-[0.98] dark:bg-rose-700 dark:hover:bg-rose-600"
+              className="mt-8 inline-block rounded-full bg-brand-700 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:scale-[1.03] hover:bg-brand-600 hover:shadow-lg active:scale-[0.98] dark:bg-brand-600 dark:hover:bg-brand-500"
             >
               Ver {featured.title}
             </Link>
@@ -105,7 +105,7 @@ export default async function Home({
           {trustPoints.map((point) => (
             <div
               key={point.title}
-              className="group flex gap-3 rounded-lg p-2 transition-colors hover:bg-rose-50/60 dark:hover:bg-zinc-900"
+              className="group flex gap-3 rounded-lg p-2 transition-colors hover:bg-brand-50/60 dark:hover:bg-zinc-900"
             >
               <span className="text-2xl transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110">
                 {point.icon}
@@ -133,8 +133,8 @@ export default async function Home({
               href="/"
               className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                 !activeCategory
-                  ? "border-rose-900 bg-rose-900 text-white dark:border-rose-700 dark:bg-rose-700"
-                  : "border-zinc-300 text-zinc-600 hover:border-rose-300 dark:border-zinc-700 dark:text-zinc-400"
+                  ? "border-brand-700 bg-brand-700 text-white dark:border-brand-700 dark:bg-brand-600"
+                  : "border-zinc-300 text-zinc-600 hover:border-brand-300 dark:border-zinc-700 dark:text-zinc-400"
               }`}
             >
               Todos
@@ -145,8 +145,8 @@ export default async function Home({
                 href={`/?categoria=${encodeURIComponent(category)}`}
                 className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
                   activeCategory === category
-                    ? "border-rose-900 bg-rose-900 text-white dark:border-rose-700 dark:bg-rose-700"
-                    : "border-zinc-300 text-zinc-600 hover:border-rose-300 dark:border-zinc-700 dark:text-zinc-400"
+                    ? "border-brand-700 bg-brand-700 text-white dark:border-brand-700 dark:bg-brand-600"
+                    : "border-zinc-300 text-zinc-600 hover:border-brand-300 dark:border-zinc-700 dark:text-zinc-400"
                 }`}
               >
                 {category}
@@ -180,7 +180,7 @@ export default async function Home({
                     {book.category}
                   </span>
                   {book.bestseller && (
-                    <span className="rounded-full bg-rose-900 px-2 py-0.5 text-[11px] font-medium text-white shadow-sm dark:bg-rose-700">
+                    <span className="rounded-full bg-brand-700 px-2 py-0.5 text-[11px] font-medium text-white shadow-sm dark:bg-brand-600">
                       Más vendido
                     </span>
                   )}
@@ -194,7 +194,7 @@ export default async function Home({
                 )}
               </div>
               <div>
-                <h3 className="font-serif text-[15px] font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-rose-800 dark:text-zinc-50 dark:group-hover:text-rose-400">
+                <h3 className="font-serif text-[15px] font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-brand-700 dark:text-zinc-50 dark:group-hover:text-brand-300">
                   {book.title}
                 </h3>
                 <p className="mt-0.5 text-[13px] text-zinc-500 dark:text-zinc-400">
@@ -248,12 +248,12 @@ export default async function Home({
       </section>
 
       <section className="px-6 py-14">
-        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 rounded-xl bg-gradient-to-r from-rose-900 to-rose-800 p-8 text-white sm:flex-row sm:items-center dark:from-rose-950 dark:to-rose-900">
+        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 rounded-xl bg-gradient-to-r from-brand-800 to-brand-600 p-8 text-white sm:flex-row sm:items-center dark:from-brand-950 dark:to-brand-800">
           <div>
             <h2 className="font-serif text-xl font-semibold">
               Recibe recomendaciones y descuentos
             </h2>
-            <p className="mt-1 text-sm text-rose-100">
+            <p className="mt-1 text-sm text-brand-100">
               Únete a nuestra comunidad de lectores. Sin spam, cancela cuando
               quieras.
             </p>

@@ -10,7 +10,7 @@ export function CartIcon() {
     <Link
       href="/carrito"
       aria-label="Ver carrito de compras"
-      className="relative inline-flex items-center rounded-full border border-rose-200 p-2 text-rose-900 transition-colors hover:bg-rose-50 dark:border-zinc-700 dark:text-rose-200 dark:hover:bg-zinc-900"
+      className="relative inline-flex items-center rounded-full border border-brand-200 p-2 text-brand-700 transition-colors hover:bg-brand-50 dark:border-zinc-700 dark:text-brand-200 dark:hover:bg-zinc-900"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export function CartIcon() {
         />
       </svg>
       {itemCount > 0 && (
-        <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-rose-800 px-1 text-[11px] font-semibold text-white dark:bg-rose-600">
+        <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[11px] font-semibold text-white dark:bg-brand-500">
           {itemCount}
         </span>
       )}

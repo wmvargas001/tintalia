@@ -20,13 +20,13 @@ export default async function BookPage({
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-paper dark:bg-zinc-950">
       <SiteHeader />
 
       <main className="mx-auto max-w-4xl px-6 py-14">
         <Link
           href="/"
-          className="mb-8 inline-block text-sm text-zinc-500 transition-colors hover:text-rose-800 dark:text-zinc-400 dark:hover:text-rose-400"
+          className="mb-8 inline-block text-sm text-zinc-500 transition-colors hover:text-brand-700 dark:text-zinc-400 dark:hover:text-brand-300"
         >
           ← Volver al catálogo
         </Link>
@@ -45,11 +45,11 @@ export default async function BookPage({
           <div className="flex flex-col gap-5">
             <div>
               <div className="mb-2 flex items-center gap-2">
-                <span className="inline-block rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-medium text-rose-800 dark:bg-rose-900/40 dark:text-rose-300">
+                <span className="inline-block rounded-full bg-brand-100 px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:bg-brand-800/40 dark:text-brand-300">
                   {book.category}
                 </span>
                 {book.bestseller && (
-                  <span className="inline-block rounded-full bg-rose-900 px-2.5 py-0.5 text-xs font-medium text-white dark:bg-rose-700">
+                  <span className="inline-block rounded-full bg-brand-700 px-2.5 py-0.5 text-xs font-medium text-white dark:bg-brand-600">
                     Más vendido
                   </span>
                 )}

@@ -3,7 +3,7 @@ import { CheckoutForm } from "./checkout-form";
 
 export default function CheckoutPage() {
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-paper dark:bg-zinc-950">
       <SiteHeader />
 
       <main className="mx-auto max-w-5xl px-6 py-12">
