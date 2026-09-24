@@ -59,7 +59,7 @@ export default function LandingPage() {
           <span className="rounded-full bg-rose-900 px-4 py-1 text-xs font-medium text-white dark:bg-rose-700">
             10% de descuento en tu primer pedido
           </span>
-          <h1 className="max-w-xl font-serif text-4xl font-semibold leading-tight tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-50">
+          <h1 className="max-w-xl font-serif text-5xl font-semibold leading-[1.05] text-zinc-900 sm:text-6xl dark:text-zinc-50">
             Tu próxima lectura te espera en Tintalia
           </h1>
           <p className="max-w-md text-zinc-600 dark:text-zinc-400">
@@ -107,7 +107,7 @@ export default function LandingPage() {
 
       <section className="border-y border-zinc-200 bg-white px-6 py-14 dark:border-zinc-800 dark:bg-zinc-900">
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-8 text-center font-serif text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
             Los favoritos de nuestros lectores
           </h2>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
@@ -125,10 +125,10 @@ export default function LandingPage() {
                     height={192}
                   />
                 </div>
-                <p className="text-sm font-medium text-zinc-900 group-hover:text-rose-800 dark:text-zinc-50 dark:group-hover:text-rose-400">
+                <h3 className="mt-1 font-serif text-base font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-rose-800 dark:text-zinc-50 dark:group-hover:text-rose-400">
                   {book.title}
-                </p>
-                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                </h3>
+                <p className="text-sm font-semibold tabular-nums text-zinc-900 dark:text-zinc-50">
                   {formatCOP(book.price)}
                 </p>
                 <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -142,7 +142,7 @@ export default function LandingPage() {
 
       <section className="px-6 py-14">
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-8 text-center font-serif text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
             Lo que dicen nuestros lectores
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -169,7 +169,7 @@ export default function LandingPage() {
         className="px-6 py-16 scroll-mt-6"
       >
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-xl bg-gradient-to-r from-rose-900 to-rose-800 p-10 text-center text-white dark:from-rose-950 dark:to-rose-900">
-          <h2 className="font-serif text-2xl font-semibold">
+          <h2 className="font-serif text-3xl font-semibold leading-tight">
             Obtén 10% en tu primera compra
           </h2>
           <p className="max-w-sm text-sm text-rose-100">

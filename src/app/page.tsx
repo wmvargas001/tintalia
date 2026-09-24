@@ -60,30 +60,27 @@ export default async function Home({
     <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
       <SiteHeader categories={categories} />
 
-      <section className="border-b border-rose-100 bg-gradient-to-b from-rose-50 to-stone-50 dark:border-zinc-800 dark:from-zinc-900 dark:to-black">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-6 py-16 sm:grid-cols-[1fr_200px]">
+      <section className="relative overflow-hidden border-b border-rose-100/80 bg-gradient-to-b from-rose-50 via-stone-50 to-stone-50 dark:border-zinc-800 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-950">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 px-6 py-20 sm:grid-cols-[1fr_220px] sm:py-24">
           <div>
-            <p className="mb-3 text-sm font-medium uppercase tracking-wide text-rose-800 dark:text-rose-400">
+            <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-800 dark:text-rose-400">
+              <span className="h-px w-8 bg-rose-300 dark:bg-rose-800" />
               {featured.bestseller ? "Más vendido" : "Nueva llegada"}
             </p>
-            <h1 className="max-w-xl font-serif text-4xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h1 className="max-w-xl font-serif text-5xl font-semibold leading-[1.05] text-zinc-900 sm:text-6xl dark:text-zinc-50">
               Libros que se quedan contigo
             </h1>
-            <p className="mt-3 max-w-md text-zinc-600 dark:text-zinc-400">
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
               Una selección curada de literatura clásica y contemporánea,
               entregada donde estés en Colombia.
             </p>
-            <div className="mt-3 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
-              <StarRating
-                rating={4.7}
-                reviewCount={353}
-                size="md"
-              />
+            <div className="mt-5 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+              <StarRating rating={4.7} reviewCount={353} size="md" />
               <span>· lectores en Colombia</span>
             </div>
             <Link
               href={`/libros/${featured.slug}`}
-              className="mt-6 inline-block rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-all hover:scale-[1.03] hover:bg-rose-800 hover:shadow-lg active:scale-[0.98] dark:bg-rose-700 dark:hover:bg-rose-600"
+              className="mt-8 inline-block rounded-full bg-rose-900 px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all hover:scale-[1.03] hover:bg-rose-800 hover:shadow-lg active:scale-[0.98] dark:bg-rose-700 dark:hover:bg-rose-600"
             >
               Ver {featured.title}
             </Link>
@@ -126,9 +123,9 @@ export default async function Home({
         </div>
       </section>
 
-      <main className="mx-auto max-w-5xl px-6 py-12">
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
+      <main className="mx-auto max-w-5xl px-6 py-16">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-zinc-200 pb-5 dark:border-zinc-800">
+          <h2 className="font-serif text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
             Catálogo
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -164,12 +161,12 @@ export default async function Home({
           </p>
         )}
 
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 md:grid-cols-4">
           {books.map((book) => (
             <Link
               key={book.slug}
               href={`/libros/${book.slug}`}
-              className="group flex flex-col gap-2"
+              className="group flex flex-col gap-3"
             >
               <div className="relative">
                 <BookCover
@@ -197,25 +194,27 @@ export default async function Home({
                 )}
               </div>
               <div>
-                <p className="text-sm font-medium text-zinc-900 group-hover:text-rose-800 dark:text-zinc-50 dark:group-hover:text-rose-400">
+                <h3 className="font-serif text-[15px] font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-rose-800 dark:text-zinc-50 dark:group-hover:text-rose-400">
                   {book.title}
-                </p>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                </h3>
+                <p className="mt-0.5 text-[13px] text-zinc-500 dark:text-zinc-400">
                   {book.author}
                 </p>
-                <StarRating
-                  rating={book.rating}
-                  reviewCount={book.reviewCount}
-                />
-                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                <div className="mt-1.5">
+                  <StarRating
+                    rating={book.rating}
+                    reviewCount={book.reviewCount}
+                  />
+                </div>
+                <p className="mt-2 text-sm font-semibold tabular-nums text-zinc-900 dark:text-zinc-50">
                   {formatCOP(book.price)}
                 </p>
                 {book.stock > 0 && book.stock <= 5 && (
-                  <p className="text-xs font-medium text-amber-700 dark:text-amber-400">
+                  <p className="mt-1 text-xs font-medium text-amber-700 dark:text-amber-400">
                     ¡Solo quedan {book.stock}!
                   </p>
                 )}
-                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
                   {book.description}
                 </p>
               </div>
@@ -226,7 +225,7 @@ export default async function Home({
 
       <section className="border-y border-zinc-200 bg-white px-6 py-14 dark:border-zinc-800 dark:bg-zinc-900">
         <div className="mx-auto max-w-5xl">
-          <h2 className="mb-8 text-center font-serif text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
             Lo que dicen nuestros lectores
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">

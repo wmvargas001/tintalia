@@ -14,8 +14,8 @@ export function BookCover({
   priority?: boolean;
 }) {
   return (
-    <div className="[perspective:900px]">
-      <div className="relative overflow-hidden rounded-lg border border-zinc-200 shadow-sm transition-all duration-300 ease-out [transform-style:preserve-3d] group-hover:-translate-y-1 group-hover:rotate-[-1.5deg] group-hover:[transform:rotateY(-10deg)_rotateX(3deg)] group-hover:shadow-2xl dark:border-zinc-800">
+    <div className="[perspective:1100px]">
+      <div className="relative overflow-hidden rounded-[3px] rounded-l-sm shadow-[0_1px_2px_rgba(24,24,27,0.12),0_8px_16px_-8px_rgba(24,24,27,0.25)] transition-all duration-500 ease-out [transform-origin:left_center] [transform-style:preserve-3d] group-hover:-translate-y-1.5 group-hover:[transform:rotateY(-14deg)_rotateX(2deg)] group-hover:shadow-[0_2px_4px_rgba(24,24,27,0.16),0_24px_40px_-12px_rgba(24,24,27,0.45)]">
         <Image
           src={src}
           alt={alt}
@@ -24,7 +24,16 @@ export function BookCover({
           priority={priority}
           className="w-full"
         />
-        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-all duration-700 ease-out group-hover:translate-x-full group-hover:opacity-100" />
+
+        {/* Lomo: banda oscura con filo claro, como el canto de un libro real. */}
+        <span className="pointer-events-none absolute inset-y-0 left-0 w-[7%] bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
+        <span className="pointer-events-none absolute inset-y-0 left-[7%] w-px bg-white/25" />
+
+        {/* Páginas: filo claro en el borde derecho. */}
+        <span className="pointer-events-none absolute inset-y-[2%] right-0 w-[2px] rounded-r-sm bg-gradient-to-l from-white/70 to-transparent" />
+
+        {/* Barrido de luz al pasar el mouse. */}
+        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-0 transition-all duration-700 ease-out group-hover:translate-x-full group-hover:opacity-100" />
       </div>
     </div>
   );

@@ -23,15 +23,15 @@ export default async function BookPage({
     <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
       <SiteHeader />
 
-      <main className="mx-auto max-w-4xl px-6 py-12">
+      <main className="mx-auto max-w-4xl px-6 py-14">
         <Link
           href="/"
-          className="mb-6 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+          className="mb-8 inline-block text-sm text-zinc-500 transition-colors hover:text-rose-800 dark:text-zinc-400 dark:hover:text-rose-400"
         >
           ← Volver al catálogo
         </Link>
 
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-[280px_1fr]">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-[280px_1fr]">
           <div className="group">
             <BookCover
               src={book.coverUrl}
@@ -54,10 +54,10 @@ export default async function BookPage({
                   </span>
                 )}
               </div>
-              <h1 className="font-serif text-3xl font-semibold leading-tight text-zinc-900 dark:text-zinc-50">
+              <h1 className="font-serif text-4xl font-semibold leading-[1.1] text-zinc-900 dark:text-zinc-50">
                 {book.title}
               </h1>
-              <p className="mt-1 text-zinc-500 dark:text-zinc-400">
+              <p className="mt-2 text-[15px] text-zinc-500 dark:text-zinc-400">
                 {book.author}
               </p>
               <div className="mt-2">
@@ -69,11 +69,11 @@ export default async function BookPage({
               </div>
             </div>
 
-            <p className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+            <p className="text-3xl font-semibold tabular-nums text-zinc-900 dark:text-zinc-50">
               {formatCOP(book.price)}
             </p>
 
-            <p className="leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <p className="max-w-prose text-[15px] leading-[1.75] text-zinc-700 dark:text-zinc-300">
               {book.description}
             </p>
 
