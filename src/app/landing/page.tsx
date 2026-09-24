@@ -130,6 +130,9 @@ export default function LandingPage() {
                 <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                   {formatCOP(book.price)}
                 </p>
+                <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {book.description}
+                </p>
               </Link>
             ))}
           </div>
