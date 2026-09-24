@@ -27,7 +27,7 @@ export default function Home() {
   const categories = getCategories();
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black">
+    <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
       <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
           <Link
@@ -47,10 +47,10 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="border-b border-zinc-200 bg-gradient-to-b from-amber-50 to-zinc-50 dark:border-zinc-800 dark:from-zinc-900 dark:to-black">
+      <section className="border-b border-rose-100 bg-gradient-to-b from-rose-50 to-stone-50 dark:border-zinc-800 dark:from-zinc-900 dark:to-black">
         <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-6 py-16 sm:grid-cols-[1fr_200px]">
           <div>
-            <p className="mb-3 text-sm font-medium uppercase tracking-wide text-amber-700 dark:text-amber-400">
+            <p className="mb-3 text-sm font-medium uppercase tracking-wide text-rose-800 dark:text-rose-400">
               Nueva llegada
             </p>
             <h1 className="max-w-xl font-serif text-4xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -62,7 +62,7 @@ export default function Home() {
             </p>
             <Link
               href={`/libros/${featured.slug}`}
-              className="mt-6 inline-block rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="mt-6 inline-block rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
             >
               Ver {featured.title}
             </Link>
@@ -145,7 +145,7 @@ export default function Home() {
                 )}
               </div>
               <div>
-                <p className="text-sm font-medium text-zinc-900 group-hover:text-amber-700 dark:text-zinc-50 dark:group-hover:text-amber-400">
+                <p className="text-sm font-medium text-zinc-900 group-hover:text-rose-800 dark:text-zinc-50 dark:group-hover:text-rose-400">
                   {book.title}
                 </p>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">

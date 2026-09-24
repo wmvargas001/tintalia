@@ -17,7 +17,7 @@ export default async function BookPage({
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black">
+    <div className="min-h-screen bg-stone-50 dark:bg-zinc-950">
       <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 px-6 py-4 backdrop-blur dark:border-zinc-800 dark:bg-black/80">
         <Link
           href="/"
@@ -49,7 +49,7 @@ export default async function BookPage({
 
           <div className="flex flex-col gap-5">
             <div>
-              <span className="mb-2 inline-block rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+              <span className="mb-2 inline-block rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-medium text-rose-800 dark:bg-rose-900/40 dark:text-rose-300">
                 {book.category}
               </span>
               <h1 className="font-serif text-3xl font-semibold leading-tight text-zinc-900 dark:text-zinc-50">
@@ -72,7 +72,7 @@ export default async function BookPage({
               <div className="flex items-center gap-3">
                 <button
                   type="button"
-                  className="w-fit rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                  className="w-fit rounded-full bg-rose-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-rose-800 dark:bg-rose-700 dark:hover:bg-rose-600"
                 >
                   Agregar al carrito
                 </button>
