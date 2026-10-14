@@ -31,6 +31,12 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
           >
             Mis pedidos
           </Link>
+          <Link
+            href="/registro"
+            className="text-sm text-stone-600 hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300"
+          >
+            Registrarse
+          </Link>
           <CartIcon />
         </div>
       </div>
