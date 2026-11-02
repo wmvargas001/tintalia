@@ -6,12 +6,14 @@ export function BookCover({
   width,
   height,
   priority,
+  unoptimized,
 }: {
   src: string;
   alt: string;
   width: number;
   height: number;
   priority?: boolean;
+  unoptimized?: boolean;
 }) {
   return (
     <div className="[perspective:1100px]">
@@ -24,7 +26,8 @@ export function BookCover({
           width={width}
           height={height}
           priority={priority}
-          className="w-full dark:brightness-[0.88] dark:transition-[filter] dark:duration-500 dark:group-hover:brightness-100"
+          unoptimized={unoptimized}
+          className="aspect-[2/3] w-full object-cover dark:brightness-[0.88] dark:transition-[filter] dark:duration-500 dark:group-hover:brightness-100"
         />
 
         {/* Lomo: banda oscura con filo claro, como el canto de un libro real. */}

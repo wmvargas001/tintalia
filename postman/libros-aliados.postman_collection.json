@@ -1,0 +1,200 @@
+{
+  "info": {
+    "name": "Tintalia - Catálogo de libros aliados",
+    "description": "Consultas a APIs públicas de libros para obtener ficha y sinopsis. Open Library no requiere clave; Google Books requiere la variable googleBooksApiKey.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "query", "value": "cien años de soledad" },
+    { "key": "isbn", "value": "9780307474728" },
+    { "key": "workKey", "value": "OL274505W" },
+    { "key": "googleBooksApiKey", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Open Library",
+      "item": [
+        {
+          "name": "Buscar libros",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://openlibrary.org/search.json?q={{query}}&limit=5&fields=key,title,author_name,first_publish_year,isbn,cover_i,language",
+              "protocol": "https",
+              "host": ["openlibrary", "org"],
+              "path": ["search.json"],
+              "query": [
+                { "key": "q", "value": "{{query}}" },
+                { "key": "limit", "value": "5" },
+                { "key": "fields", "value": "key,title,author_name,first_publish_year,isbn,cover_i,language" }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "const docs = pm.response.json().docs;",
+                  "pm.test('Hay resultados', () => pm.expect(docs.length).to.be.above(0));",
+                  "if (docs.length) {",
+                  "  pm.collectionVariables.set('workKey', docs[0].key.replace('/works/', ''));",
+                  "  console.log('Primer resultado:', docs[0].title, '-', (docs[0].author_name || []).join(', '));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sinopsis de la obra",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://openlibrary.org/works/{{workKey}}.json",
+              "protocol": "https",
+              "host": ["openlibrary", "org"],
+              "path": ["works", "{{workKey}}.json"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "const work = pm.response.json();",
+                  "// description puede venir como string o como { type, value }",
+                  "const synopsis = typeof work.description === 'string' ? work.description : work.description && work.description.value;",
+                  "pm.test('Tiene sinopsis', () => pm.expect(synopsis).to.be.a('string'));",
+                  "console.log('Sinopsis:', (synopsis || '').slice(0, 300));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Libro por ISBN",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://openlibrary.org/api/books?bibkeys=ISBN:{{isbn}}&format=json&jscmd=data",
+              "protocol": "https",
+              "host": ["openlibrary", "org"],
+              "path": ["api", "books"],
+              "query": [
+                { "key": "bibkeys", "value": "ISBN:{{isbn}}" },
+                { "key": "format", "value": "json" },
+                { "key": "jscmd", "value": "data" }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "const book = pm.response.json()['ISBN:' + pm.variables.get('isbn')];",
+                  "pm.test('ISBN encontrado', () => pm.expect(book).to.be.an('object'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Portada por ISBN",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://covers.openlibrary.org/b/isbn/{{isbn}}-L.jpg?default=false",
+              "protocol": "https",
+              "host": ["covers", "openlibrary", "org"],
+              "path": ["b", "isbn", "{{isbn}}-L.jpg"],
+              "query": [{ "key": "default", "value": "false" }]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Portada disponible', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Google Books",
+      "item": [
+        {
+          "name": "Buscar libros en español",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://www.googleapis.com/books/v1/volumes?q={{query}}&langRestrict=es&maxResults=5&key={{googleBooksApiKey}}",
+              "protocol": "https",
+              "host": ["www", "googleapis", "com"],
+              "path": ["books", "v1", "volumes"],
+              "query": [
+                { "key": "q", "value": "{{query}}" },
+                { "key": "langRestrict", "value": "es" },
+                { "key": "maxResults", "value": "5" },
+                { "key": "key", "value": "{{googleBooksApiKey}}" }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "const items = pm.response.json().items || [];",
+                  "items.forEach(i => console.log(i.volumeInfo.title, '|', (i.volumeInfo.description || 'sin sinopsis').slice(0, 120)));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Libro por ISBN",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://www.googleapis.com/books/v1/volumes?q=isbn:{{isbn}}&key={{googleBooksApiKey}}",
+              "protocol": "https",
+              "host": ["www", "googleapis", "com"],
+              "path": ["books", "v1", "volumes"],
+              "query": [
+                { "key": "q", "value": "isbn:{{isbn}}" },
+                { "key": "key", "value": "{{googleBooksApiKey}}" }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Tiene resultados', () => pm.expect(pm.response.json().totalItems).to.be.above(0));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

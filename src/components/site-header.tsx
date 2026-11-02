@@ -26,6 +26,12 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
         )}
         <div className="flex items-center gap-4">
           <Link
+            href="/explorar"
+            className="text-sm font-medium text-brand-700 hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200"
+          >
+            Explorar
+          </Link>
+          <Link
             href="/pedidos"
             className="hidden text-sm text-stone-600 hover:text-brand-700 sm:block dark:text-stone-400 dark:hover:text-brand-300"
           >
