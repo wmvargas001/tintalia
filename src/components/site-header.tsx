@@ -32,6 +32,12 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
             Explorar
           </Link>
           <Link
+            href="/usuarios"
+            className="hidden text-sm text-stone-600 hover:text-brand-700 sm:block dark:text-stone-400 dark:hover:text-brand-300"
+          >
+            Usuarios
+          </Link>
+          <Link
             href="/pedidos"
             className="hidden text-sm text-stone-600 hover:text-brand-700 sm:block dark:text-stone-400 dark:hover:text-brand-300"
           >
