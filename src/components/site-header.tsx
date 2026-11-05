@@ -38,6 +38,12 @@ export function SiteHeader({ categories = [] }: { categories?: string[] }) {
             Usuarios
           </Link>
           <Link
+            href="/postman"
+            className="hidden text-sm text-stone-600 hover:text-brand-700 sm:block dark:text-stone-400 dark:hover:text-brand-300"
+          >
+            Postman
+          </Link>
+          <Link
             href="/pedidos"
             className="hidden text-sm text-stone-600 hover:text-brand-700 sm:block dark:text-stone-400 dark:hover:text-brand-300"
           >
