@@ -1,14 +1,14 @@
 {
   "info": {
     "name": "Tintalia - Catálogo de libros aliados",
-    "description": "Consultas a APIs públicas de libros para obtener ficha y sinopsis. Open Library no requiere clave; Google Books requiere la variable googleBooksApiKey.",
+    "description": "Consultas a APIs públicas de libros para obtener ficha y sinopsis. Open Library no requiere clave. JSONPlaceholder alimenta /usuarios. \"Sitio desplegado\" comprueba las páginas publicadas en baseUrl.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
+    { "key": "baseUrl", "value": "https://tintalia.vercel.app" },
     { "key": "query", "value": "cien años de soledad" },
     { "key": "isbn", "value": "9780307474728" },
-    { "key": "workKey", "value": "OL274505W" },
-    { "key": "googleBooksApiKey", "value": "" }
+    { "key": "workKey", "value": "OL274505W" }
   ],
   "item": [
     {
@@ -133,22 +133,28 @@
       ]
     },
     {
-      "name": "Google Books",
+      "name": "JSONPlaceholder (página /usuarios)",
       "item": [
         {
-          "name": "Buscar libros en español",
+          "name": "Usuarios",
           "request": {
             "method": "GET",
+            "header": [
+              {
+                "key": "Origin",
+                "value": "{{baseUrl}}"
+              }
+            ],
             "url": {
-              "raw": "https://www.googleapis.com/books/v1/volumes?q={{query}}&langRestrict=es&maxResults=5&key={{googleBooksApiKey}}",
+              "raw": "https://jsonplaceholder.typicode.com/users",
               "protocol": "https",
-              "host": ["www", "googleapis", "com"],
-              "path": ["books", "v1", "volumes"],
-              "query": [
-                { "key": "q", "value": "{{query}}" },
-                { "key": "langRestrict", "value": "es" },
-                { "key": "maxResults", "value": "5" },
-                { "key": "key", "value": "{{googleBooksApiKey}}" }
+              "host": [
+                "jsonplaceholder",
+                "typicode",
+                "com"
+              ],
+              "path": [
+                "users"
               ]
             }
           },
@@ -159,25 +165,51 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('200 OK', () => pm.response.to.have.status(200));",
-                  "const items = pm.response.json().items || [];",
-                  "items.forEach(i => console.log(i.volumeInfo.title, '|', (i.volumeInfo.description || 'sin sinopsis').slice(0, 120)));"
+                  "const users = pm.response.json();",
+                  "pm.test('Hay usuarios', () => pm.expect(users).to.be.an('array').that.is.not.empty);",
+                  "pm.test('Traen los campos que muestra la página', () => {",
+                  "  users.forEach((u) => {",
+                  "    pm.expect(u.id).to.be.a('number');",
+                  "    pm.expect(u.name).to.be.a('string');",
+                  "    pm.expect(u.email).to.be.a('string');",
+                  "    pm.expect(u.company.name).to.be.a('string');",
+                  "  });",
+                  "});",
+                  "pm.test('El navegador puede leerla desde el sitio (CORS)', () => {",
+                  "  const allow = pm.response.headers.get('Access-Control-Allow-Origin');",
+                  "  pm.expect(['*', pm.collectionVariables.get('baseUrl')]).to.include(allow);",
+                  "});"
                 ]
               }
             }
           ]
         },
         {
-          "name": "Libro por ISBN",
+          "name": "Publicaciones de un usuario",
           "request": {
             "method": "GET",
+            "header": [
+              {
+                "key": "Origin",
+                "value": "{{baseUrl}}"
+              }
+            ],
             "url": {
-              "raw": "https://www.googleapis.com/books/v1/volumes?q=isbn:{{isbn}}&key={{googleBooksApiKey}}",
+              "raw": "https://jsonplaceholder.typicode.com/posts?userId=1",
               "protocol": "https",
-              "host": ["www", "googleapis", "com"],
-              "path": ["books", "v1", "volumes"],
+              "host": [
+                "jsonplaceholder",
+                "typicode",
+                "com"
+              ],
+              "path": [
+                "posts"
+              ],
               "query": [
-                { "key": "q", "value": "isbn:{{isbn}}" },
-                { "key": "key", "value": "{{googleBooksApiKey}}" }
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
               ]
             }
           },
@@ -188,7 +220,395 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('200 OK', () => pm.response.to.have.status(200));",
-                  "pm.test('Tiene resultados', () => pm.expect(pm.response.json().totalItems).to.be.above(0));"
+                  "const posts = pm.response.json();",
+                  "pm.test('Hay publicaciones', () => pm.expect(posts).to.be.an('array').that.is.not.empty);",
+                  "pm.test('Son del usuario pedido y traen título y texto', () => {",
+                  "  posts.forEach((p) => {",
+                  "    pm.expect(p.userId).to.eql(1);",
+                  "    pm.expect(p.title).to.be.a('string');",
+                  "    pm.expect(p.body).to.be.a('string');",
+                  "  });",
+                  "});",
+                  "pm.test('El navegador puede leerla desde el sitio (CORS)', () => {",
+                  "  const allow = pm.response.headers.get('Access-Control-Allow-Origin');",
+                  "  pm.expect(['*', pm.collectionVariables.get('baseUrl')]).to.include(allow);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sitio desplegado",
+      "item": [
+        {
+          "name": "Inicio",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": []
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));",
+                  "pm.test('Enlaza a las fichas de libros', () => pm.expect(pm.response.text()).to.include('/libros/'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Landing",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/landing",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "landing"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Ficha de libro",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/libros/cien-anos-de-soledad",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "libros",
+                "cien-anos-de-soledad"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));",
+                  "pm.test('Muestra el libro pedido', () => pm.expect(pm.response.text()).to.include('Cien años de soledad'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Explorar",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/explorar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "explorar"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Explorar con búsqueda",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/explorar?q=soledad",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "explorar"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "soledad"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));",
+                  "pm.test('Devuelve resultados de Open Library', () => pm.expect(pm.response.text()).to.include('/explorar/OL'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Explorar: detalle de obra",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/explorar/{{workKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "explorar",
+                "{{workKey}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Carrito",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/carrito",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carrito"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Checkout",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/checkout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "checkout"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pedidos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Registro",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/registro",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "registro"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Usuarios",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/usuarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Devuelve HTML', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html'));",
+                  "pm.test('Es la página de Tintalia', () => pm.expect(pm.response.text()).to.include('Tintalia'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Portada",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/covers/cien-anos-de-soledad.svg",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "covers",
+                "cien-anos-de-soledad.svg"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "pm.test('Es una imagen SVG', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('image/svg+xml'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Página inexistente",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/no-existe",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "no-existe"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Responde 404', () => pm.response.to.have.status(404));"
                 ]
               }
             }
